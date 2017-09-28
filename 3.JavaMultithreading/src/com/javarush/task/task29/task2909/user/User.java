@@ -1,0 +1,112 @@
+package com.javarush.task.task29.task2909.user;
+
+public class User {
+    private boolean man;
+    public boolean isMan() {
+        return man;
+    }
+
+    public void setMan(boolean b) {
+        this.man = b;
+
+    }
+
+
+
+
+    private String name;
+    private String surname;
+    private int age;
+
+    private Address address;
+
+
+
+    /*private String country;
+    private String city;
+    */
+
+    /*public Address getAddress() {
+        return address;
+    }*/
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+
+
+
+    private Work work;
+
+    public User(String name, String surname, int age) {
+        //this.setMan();
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getCountry() {
+        return address.getCountry();
+    }
+
+    public void setCountry(String country) {
+        this.address.setCountry(country);
+    }
+
+    public String getCity() {
+        return address.getCity();
+    }
+
+    public void setCity(String city) {
+        this.address.setCity(city);
+    }
+
+    public String getAddress() {
+        return getCountry() + " " + getCity() + " " + address.getHouse();
+    }
+    public Work getWork() {
+        return work;
+    }
+
+    public void setWork(Work work) {
+        this.work = work;
+    }
+    public void printInfo(){
+        System.out.println(String.format("Имя: %s\nФамилия: %s",getName(),getSurname()));
+    }
+    public void printAdditionalInfo() {
+        if (getAge()<16)
+            //if (ageLessThan16(user))
+            System.out.println("Пользователь моложе 16 лет");
+        else
+            System.out.println("Пользователь старше 16 лет");
+    }
+    public String getBoss(){
+        return getWork().getBoss();
+    }
+}
