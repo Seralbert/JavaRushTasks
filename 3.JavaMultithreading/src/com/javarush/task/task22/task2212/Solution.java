@@ -1,26 +1,28 @@
 package com.javarush.task.task22.task2212;
 
-import java.util.Formatter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 /*
 Проверка номера телефона
 */
 public class Solution {
-//    public static boolean checkTelNumber(String telNumber) {
-    public static void checkTelNumber(String telNumber) {
-        Pattern p = Pattern.compile("^\\+?[0-9]{2}\\(?[0-9]{3}\\)?[0-9]{7}$");
-        Matcher m = p.matcher(telNumber);
-        System.out.println(telNumber);
-        if (m.matches()) System.out.println("1 plus 12 digit");
-        else System.out.println("Kosyak");
+    public static boolean checkTelNumber(String telNumber) {
+        if(telNumber == null){return false;}
 
-        //return false;
+        if (telNumber.matches("^\\+\\d{12}")){return true;}
+
+        if (telNumber.matches("^\\+\\d{1,2}\\(\\d{3}\\)\\d{7,8}")){
+            return true;}
+
+        if (telNumber.matches("^\\+\\d{8}-\\d{2}-\\d{2}")){return true;}
+
+        if (telNumber.matches("^\\d{6}-\\d{4}")){return true;}
+
+        return false;
     }
 
     public static void main(String[] args) {
-        //checkTelNumber("+38(050)1234567");
-        checkTelNumber("+38(050)1234567");
+
+        System.out.println(checkTelNumber("+3(050)12345678"));
     }
 }
