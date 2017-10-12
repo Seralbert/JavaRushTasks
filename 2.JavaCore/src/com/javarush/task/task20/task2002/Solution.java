@@ -1,11 +1,15 @@
 package com.javarush.task.task20.task2002;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-/* 
+/*
 Читаем и пишем в файл: JavaRush
+Реализуйте логику записи в файл и чтения из файла для класса JavaRush.
+В файле your_file_name.tmp может быть несколько объектов JavaRush.
+Метод main реализован только для вас и не участвует в тестировании.
 */
 public class Solution {
     public static void main(String[] args) {
@@ -18,7 +22,7 @@ public class Solution {
 
             JavaRush javaRush = new JavaRush();
             //initialize users field for the javaRush object here - инициализируйте поле users для объекта javaRush тут
-            //javaRush.users = new ArrayList<>();
+
             javaRush.save(outputStream);
             outputStream.flush();
 
@@ -43,10 +47,44 @@ public class Solution {
 
         public void save(OutputStream outputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            DataOutputStream outToFile = new DataOutputStream(outputStream);
+
+            outToFile.writeInt(users.size());
+            for (User user : users) {
+
+                String firstName = (user.getFirstName() == null) ? "null" : user.getFirstName();
+                outToFile.writeUTF(firstName);
+                String lastName = (user.getLastName() == null) ? "null" : user.getLastName();
+                outToFile.writeUTF(lastName);
+                outToFile.writeLong(user.getBirthDate().getTime());
+                outToFile.writeBoolean(user.isMale());
+                outToFile.writeUTF(user.getCountry().name());
+            }
+            outToFile.flush();
         }
+
 
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            DataInputStream fromFile = new DataInputStream(inputStream);
+
+            int usersCount = fromFile.readInt();
+            for (int i = 0; i < usersCount; i++) {
+
+                User user = new User();
+
+                String firstName = fromFile.readUTF();
+                if (firstName.equals("null")) firstName = null;
+                user.setFirstName(firstName);
+                String lastName = fromFile.readUTF();
+                if (lastName.equals("null")) lastName = null;
+                user.setLastName(lastName);
+                user.setBirthDate(new Date(fromFile.readLong()));
+                user.setMale(fromFile.readBoolean());
+                user.setCountry(User.Country.valueOf(fromFile.readUTF()));
+
+                users.add(user);
+            }
         }
 
         @Override

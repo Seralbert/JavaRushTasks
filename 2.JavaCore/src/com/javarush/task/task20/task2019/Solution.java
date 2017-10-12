@@ -38,7 +38,7 @@ public class Solution implements Serializable {
         return m;
     }
 
-    /*public void Solution() {
+    /*public void SolutionMy() {
         m.put("Mickey", "Mouse");
         m.put("Mickey", "Mantle");
     }*/

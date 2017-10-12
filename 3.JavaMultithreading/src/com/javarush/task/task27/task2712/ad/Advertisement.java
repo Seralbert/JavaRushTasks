@@ -2,8 +2,10 @@ package com.javarush.task.task27.task2712.ad;
 
 /**
  * Created by USER-PC on 24.09.2017.
+ *
  */
-public class Advertisement implements Comparable<Advertisement>{
+//public class Advertisement implements Comparable<Advertisement>{
+public class Advertisement {
     private Object content;
     private String name;
     private long initialAmount;
@@ -11,37 +13,29 @@ public class Advertisement implements Comparable<Advertisement>{
     private int duration;
     private long amountPerOneDisplaying;
 
-
     public Advertisement(Object content, String name, long initialAmount, int hits, int duration) {
         this.content = content;
         this.name = name;
         this.initialAmount = initialAmount;
         this.hits = hits;
         this.duration = duration;
-
-        this.amountPerOneDisplaying = initialAmount / hits;
-    }
-
-    public int getDuration() {
-        return duration;
+        this.amountPerOneDisplaying = initialAmount/hits;
     }
 
     public String getName() {
         return name;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
     public long getAmountPerOneDisplaying() {
         return amountPerOneDisplaying;
     }
 
-    public void revalidate(){
-        if(hits==0) throw new UnsupportedOperationException();
-        this.hits--;
-
-    }
-
-    @Override
-    public int compareTo(Advertisement o) {
-        return o.amountPerOneDisplaying>this.amountPerOneDisplaying?1:-1;
+    public void revalidate() {
+        if (hits <= 0) throw new NoVideoAvailableException();
+        hits--;
     }
 }

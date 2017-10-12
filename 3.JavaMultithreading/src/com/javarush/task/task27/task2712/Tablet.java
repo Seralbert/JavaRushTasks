@@ -9,32 +9,33 @@ import java.util.logging.Logger;
 public class Tablet extends Observable {
     final int number;
     static Logger logger = Logger.getLogger(Tablet.class.getName());
+
     public Tablet(int number) {
         this.number = number;
     }
+
     public Order createOrder() {
+        Order order = null;
         try {
-            Order order = new Order(this);
-            ConsoleHelper.writeMessage(order.toString());
+            order = new Order(this);
             if (!order.isEmpty()) {
-                try {
-                    AdvertisementManager advertisementManager = new AdvertisementManager(order.getTotalCookingTime() * 60);
-                    advertisementManager.processVideos();
-                }catch (NoVideoAvailableException e){
-                    logger.log(Level.INFO, "No video is available for the order " + order);
-                }
                 setChanged();
                 notifyObservers(order);
+                ConsoleHelper.writeMessage(order.toString());
+                AdvertisementManager adManager = new AdvertisementManager(order.getTotalCookingTime()*60);
+                adManager.processVideos();
             }
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Console is unavailable.");
+        } catch (NoVideoAvailableException e) {
+            logger.log(Level.INFO, "No video is available for the order " + order);
+        } finally{
             return order;
         }
-        catch (IOException e) {
-            logger.log(Level.SEVERE, "Console is unavailable.");
-            return null;
-        }
     }
+
     @Override
     public String toString() {
-        return "Tablet{number=" + number + "}";
+        return String.format("Tablet{number=%d}", number);
     }
 }

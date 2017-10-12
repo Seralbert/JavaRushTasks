@@ -23,7 +23,7 @@ public class Solution {
     }
 
     public Solution() {
-        System.out.println("Solution constructor"); //8
+        System.out.println("SolutionMy constructor"); //8
         printAllFields(this);
     }
 

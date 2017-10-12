@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /* 
-Serializable Solution
+Serializable SolutionMy
 */
 public class Solution implements Serializable{
     public static void main(String[] args) throws IOException{
@@ -43,7 +43,7 @@ public class Solution implements Serializable{
        File fileName = File.createTempFile("test.txt",null);
        InputStream inputStream = new FileInputStream(fileName);
        OutputStream outputStream = new FileOutputStream(fileName);
-       Solution savedObject = new Solution(10);
+       SolutionMy savedObject = new SolutionMy(10);
 
        */
     }

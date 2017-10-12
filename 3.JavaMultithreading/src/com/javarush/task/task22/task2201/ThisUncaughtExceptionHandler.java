@@ -15,30 +15,31 @@ public class ThisUncaughtExceptionHandler implements Thread.UncaughtExceptionHan
     }
 
     protected String getFormattedStringForOtherThread(Thread t, Throwable e, String string) {
-        /*
-     RuntimeException : java.lang.StringIndexOutOfBoundsException: String index out of range: -1 : 3#*/
-        String res = t.toString();
-        System.out.println("Other THREAD: t:" + t.toString() + "| e:" + e.toString() + "| string:" + string);
-        return res;
+
+        //return "t: " + t.getName() + " e: "+ e.getClass().getSimpleName()  + " string: " + string;
+        return String.format(string,
+                e.getClass().getSimpleName(),
+                //"java.lang.StringIndexOutOfBoundsException: String index out of range: -1",
+                e.getCause(),
+                t.getName());
     }
 
     protected String getFormattedStringForSecondThread(Thread t, Throwable e, String string) {
-        /*
-     java.lang.StringIndexOutOfBoundsException: String index out of range: -1 : TooShortStringSecondThreadException : 2#
-        */
-        //String res = "java.lang.StringIndexOutOfBoundsException: String index out of range: -1 : " + e + " : "+ t;
-        String res = "java.lang.StringIndexOutOfBoundsException: String index out of range: -1 : TooShortStringSecondThreadException : 2#";
-        return res;
+        return String.format(string,
+                //"java.lang.StringIndexOutOfBoundsException: String index out of range: -1",
+                e.getCause(),
+                e.getClass().getSimpleName(),
+                t.getName());
+        //return "t: " + t + " e: "+ e  + " string: " + string;
     }
 
     protected String getFormattedStringForFirstThread(Thread t, Throwable e, String string) {
-
-        /*
-     1# : TooShortStringFirstThreadException : java.lang.StringIndexOutOfBoundsException: String index out of range: -1
-        */
-        String res = "1# : TooShortStringFirstThreadException : java.lang.StringIndexOutOfBoundsException: String index out of range: -1";
-        //String res = t + " : " + e + " : " + "java.lang.StringIndexOutOfBoundsException: String index out of range: -1 : ";
-        return res;
+        return String.format(string,
+                t.getName(),
+                e.getClass().getSimpleName(),
+                e.getCause()
+                //"java.lang.StringIndexOutOfBoundsException: String index out of range: -1"
+                );
     }
 }
 

@@ -19,7 +19,7 @@ public abstract class Solution implements java.util.List<Long>
 
 }
 /*
-public class Solution implements List<Long> {
+public class SolutionMy implements List<Long> {
 private ArrayList<long> original = new ArrayList<long>();
 
 @Override

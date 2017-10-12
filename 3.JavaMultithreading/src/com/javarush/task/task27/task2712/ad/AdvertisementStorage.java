@@ -8,29 +8,24 @@ import java.util.List;
  */
 public class AdvertisementStorage {
     private final List<Advertisement> videos = new ArrayList<>();
-
-    static {
-        Object someContent = new Object();
-        new Advertisement(someContent, "First Video", 5000, 100, 3 * 60); // 3 min
-        new Advertisement(someContent, "Second Video", 100, 10, 15 * 60); //15 min
-        new Advertisement(someContent, "Third Video", 400, 2, 10 * 60); //10 min
-    }
-
-    public List<Advertisement> list(){
-        return this.videos;
-    }
-
-    public void add(Advertisement advertisement){
-        this.videos.add(advertisement);
-    }
-
-    private static AdvertisementStorage ourInstance = new AdvertisementStorage();
+    private static AdvertisementStorage instance = new AdvertisementStorage();
 
     public static AdvertisementStorage getInstance() {
-        return ourInstance;
+        return instance;
     }
 
     private AdvertisementStorage() {
+        Object someContent = new Object();
+        add(new Advertisement(someContent, "First Video", 5000, 100, 3 * 60)); // 3 min
+        add(new Advertisement(someContent, "Second Video", 100, 10, 15 * 60)); //15 min
+        add(new Advertisement(someContent, "Third Video", 400, 2, 10 * 60)); //10 min
+    }
 
+    public List<Advertisement> list() {
+        return videos;
+    }
+
+    public void add(Advertisement advertisement) {
+        videos.add(advertisement);
     }
 }

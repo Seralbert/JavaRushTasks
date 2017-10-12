@@ -24,7 +24,7 @@ id productName price quantity
 
 import java.io.*;
 
-public class Solution {
+public class SolutionMy {
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String fileName = reader.readLine();//"f:/test";

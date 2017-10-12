@@ -8,7 +8,7 @@ package com.javarush.task.task14.task1408;
  *где Sssss — название страны
  *где N — количество яиц в месяц
  */
-//import com.javarush.task.task14.task1408.Solution;
+//import com.javarush.task.task14.task1408.SolutionMy;
 
 public class BelarusianHen extends Hen {
     @Override

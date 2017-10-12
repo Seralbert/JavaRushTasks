@@ -1,0 +1,32 @@
+package com.javarush.task.task27.task2712.statistic.event;
+
+import com.javarush.task.task27.task2712.ad.Advertisement;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by USER-PC on 12.10.2017.
+ */
+public class VideoSelectedEventDataRow implements EventDataRow {
+    private Date currentDate;
+    private List<Advertisement> optimalVideoSet;
+    private long amount;
+    private int totalDuration;
+    public VideoSelectedEventDataRow(List<Advertisement> optimalVideoSet, long amount, int totalDuration){
+        /*
+        optimalVideoSet — список видео-роликов, отобранных для показа
+        amount — сумма денег в копейках
+        totalDuration — общая продолжительность показа отобранных рекламных роликов
+         */
+        this.currentDate = new Date();
+        this.amount = amount;
+        this.optimalVideoSet = optimalVideoSet;
+        this.totalDuration = totalDuration;
+    }
+
+    @Override
+    public EventType getType() {
+        return EventType.SELECTED_VIDEOS;
+    }
+}
