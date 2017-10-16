@@ -37,5 +37,7 @@ public class Advertisement {
     public void revalidate() {
         if (hits <= 0) throw new NoVideoAvailableException();
         hits--;
+        /*if(hits<=0)throw new UnsupportedOperationException();
+        hits--;*/
     }
 }

@@ -13,5 +13,6 @@
     <orderEntry type="library" name="org.apache.commons:commons-collections4:4.0" level="application" />
     <orderEntry type="library" name="com.bluecatcode.junit:junit-4.12-extended:1.1.0" level="application" />
     <orderEntry type="library" name="org.hamcrest:hamcrest-core:1.3" level="application" />
+    <orderEntry type="library" name="org.jboss.forge.addon:slf4j:1.7.13" level="application" />
   </component>
 </module>

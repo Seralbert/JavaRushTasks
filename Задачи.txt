@@ -108,12 +108,19 @@ public static void main(String[] args) throws Exception {
 3512 - Class<T> .newInstance()
 3606 - ClassLoader (очень сложно , надо доразобраться)
 3608 - MVC
+3701 - Круговой Iterator
+3706 - Arrays.asList возвращает обернутый массив фиксированного размера!
+3708 - Кэширующий Proxy (КРУТО!)
+3709 - Security Proxy
+3710 - Pattern Decorator
+3711 - Pattern Фасад
+3712 - Template method (Шаблонный метод)
+3713 - Chain of Responsibility (цепочка эскалирования по правам)
 
 
 
-27 405
 28 420
 29 435
 30 450
 
-1710
+1305
