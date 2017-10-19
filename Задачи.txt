@@ -116,6 +116,8 @@ public static void main(String[] args) throws Exception {
 3711 - Pattern Фасад
 3712 - Template method (Шаблонный метод)
 3713 - Chain of Responsibility (цепочка эскалирования по правам)
+3809 - Reflection + Annotations
+3810 - Аннотации (ничего не понял)
 
 
 
